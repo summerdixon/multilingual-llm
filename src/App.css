@@ -40,24 +40,14 @@
 
 .landing-center {
   position: absolute;
-  top: 50%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   justify-items: center;
   row-gap: 20px;
   display: grid;
-}
-
-.landing-heading {
-  color: #FFF;
-
-  /* Heading */
-  font-family: var(--sds-typography-heading-font-family);
-  font-size: var(--sds-typography-heading-size-base);
-  font-style: normal;
-  font-weight: var(--sds-typography-heading-font-weight);
-  line-height: 120%; /* 28.8px */
-  letter-spacing: -0.48px;
+  width: 55vw;
+  max-width: 900px;
 }
 
 .landing-subtitle {
@@ -87,4 +77,42 @@
 
 .css-ptdwpq-MuiPaper-root-MuiAppBar-root {
   background-color: #fff !important;
+}
+
+.pulse {
+  animation: khPulse 2.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes khPulse {
+  0% {
+    filter: drop-shadow(0 0 0 rgba(205, 120, 75, 0));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(212, 117, 49, 0.9));
+    transform: scale(1.03);
+  }
+  100% {
+    filter: drop-shadow(0 0 0 rgba(173, 84, 48, 0));
+    transform: scale(1);
+  }
+}
+
+@keyframes sparkleDrift {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.9);
+  }
+  40% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.3;
+    transform: translate(-50%, -52%) scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -55%) scale(1.08);
+  }
 }
