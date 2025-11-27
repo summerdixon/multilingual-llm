@@ -72,7 +72,7 @@ export default function Home() {
                         className="country-geo"
                         onClick={() => {
                         console.log("Clicked Cambodia");
-                        navigate("/country/cambodia");
+                        navigate("/cambodia");
                         }}
                         style={{
                         default: {
