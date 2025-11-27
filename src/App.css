@@ -71,3 +71,16 @@
   font-weight: var(--sds-typography-body-font-weight-regular);
   line-height: 140%; /* 22.4px */
 }
+
+.community-center-title {
+  color: #000;
+  text-align: center;
+
+  /* Heading */
+  font-family: var(--sds-typography-heading-font-family);
+  font-size: var(--sds-typography-heading-size-base);
+  font-style: normal;
+  font-weight: var(--sds-typography-heading-font-weight);
+  line-height: 120%; /* 28.8px */
+  letter-spacing: -0.48px;
+}

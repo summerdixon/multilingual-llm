@@ -1,79 +1,95 @@
-import { useEffect, useState } from "react";
-import { supabase } from "../lib/supabaseClient";
-import { Box, Card, CardContent, Typography, Chip } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { IMAGE_CLUSTERS } from "../data/images";
 
-type ImageCluster = {
-  cluster_id: number;
-  label_en: string | null;
-  label_km: string | null;
-  keywords: string | null;
-};
+const ORBIT_POSITIONS = [
+  { top: "15%", left: "15%" },
+  { top: "20%", right: "12%" },
+  { top: "45%", right: "8%" },
+  { bottom: "18%", right: "18%" },
+  { bottom: "18%", left: "18%" },
+  { top: "45%", left: "8%" },
+];
 
 export default function CommunityCenter() {
-  const [clusters, setClusters] = useState<ImageCluster[]>([]);
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    async function fetchClusters() {
-      const { data, error } = await supabase
-        .from("smot_image_clusters")
-        .select("cluster_id, label_en, label_km, keywords")
-        .order("cluster_id", { ascending: true });
-
-      if (error) {
-        console.error("Error fetching clusters", error);
-      } else {
-        setClusters(data || []);
-      }
-      setLoading(false);
-    }
-
-    fetchClusters();
-  }, []);
-
-  if (loading) {
-    return <Box p={2}>Loading topics…</Box>;
-  }
-
   return (
-    <Box p={2} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-      {clusters.map((cl) => {
-        const keywords =
-          cl.keywords?.split("|").filter((k) => k.trim().length > 0) ?? [];
+    <Box
+      sx={{
+        height: "100vh",
+        width: "100vw",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        bgcolor: "#ffffff",
+      }}
+    >
+        {/* Center circle */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 120,
+            height: 120,
+            borderRadius: "50%",
+            bgcolor: "#e5e7eb",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            px: 2,
+          }}
+        >
+          <Typography className="community-center-title">
+            Community Center
+          </Typography>
+        </Box>
 
-        return (
-          <Card
-            key={cl.cluster_id}
-            onClick={() => navigate(`/topics/${cl.cluster_id}`)}
-            sx={{
-              borderRadius: 3,
-              boxShadow: 2,
-              cursor: "pointer",
-            }}
-          >
-            <CardContent>
-              <Typography variant="subtitle2" color="text.secondary">
-                Topic #{cl.cluster_id}
+        {IMAGE_CLUSTERS.map((cluster, idx) => {
+          const pos = ORBIT_POSITIONS[idx % ORBIT_POSITIONS.length];
+
+          return (
+            <Box
+              key={cluster.id}
+              sx={{
+                position: "absolute",
+                ...pos,
+                width: 64,
+                height: 64,
+                borderRadius: "50%",
+                bgcolor: "#e5e7eb",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+                px: 1,
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                // later: navigate to topic detail or cluster view
+                // e.g. navigate(`/topics/${cluster.id}`);
+                console.log("Clicked cluster", cluster.id);
+              }}
+            >
+              <Typography
+                variant="caption"
+                sx={{
+                  lineHeight: 1.2,
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "wrap",
+                }}
+              >
+                {cluster.label}
               </Typography>
-              <Typography variant="h6">
-                {cl.label_en || `Cluster ${cl.cluster_id}`}
-              </Typography>
-              {cl.label_km && (
-                <Typography variant="body2" sx={{ mt: 0.5 }}>
-                  {cl.label_km}
-                </Typography>
-              )}
-              <Box sx={{ mt: 1.5, display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                {keywords.slice(0, 5).map((kw) => (
-                  <Chip key={kw} label={kw} size="small" />
-                ))}
-              </Box>
-            </CardContent>
-          </Card>
-        );
-      })}
+            </Box>
+          );
+        })}
     </Box>
   );
 }
