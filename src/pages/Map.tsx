@@ -21,7 +21,7 @@ export default function Home() {
         projection="geoEqualEarth"
         projectionConfig={{
           scale: 1000,
-          center: [100, 11] as any, // center Cambodia
+          center: [102, 11] as any, // center Cambodia
         }}
         style={{ width: "100%", height: "100%" }}
       >
