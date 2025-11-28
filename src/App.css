@@ -5,6 +5,10 @@
   height: 100vh;
 }
 
+body {
+  overflow-y: auto;
+}
+
 .map-box {
   width: 100vw;
   height: 100vh;
@@ -41,6 +45,18 @@
 .landing-center {
   position: absolute;
   top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-items: flex-start;
+  row-gap: 32px;
+  display: grid;
+  width: 55vw;
+  max-width: 900px;
+}
+
+.community-center {
+  position: absolute;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   align-items: flex-start;

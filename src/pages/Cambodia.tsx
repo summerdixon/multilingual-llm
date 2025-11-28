@@ -13,7 +13,7 @@ import background from "../assets/cambodian_background.png";
 
 type Language = "en" | "km";
 
-export default function CambodiaLanding() {
+export default function Cambodia() {
     const navigate = useNavigate();
 
     const [language, setLanguage] = useState<Language>("en");
@@ -120,7 +120,6 @@ return (
                 }}
             >
                 <Button
-                
                     variant="outlined"
                     onClick={() => setLanguage("en")}
                     sx={{

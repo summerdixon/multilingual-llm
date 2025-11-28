@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, IconButton, Typography } from "@mui/material";
-import { Image, Headphones, Chat, Hub } from "@mui/icons-material";
+import { Image, Headphones, Chat, Hub, PostAdd } from "@mui/icons-material";
 import Navbar from "../components/Navbar";
 import ChatBubble from "../components/ChatBubble";
 import ChatBubbleRecent from "../components/ChatBubbleRecent";
@@ -15,8 +15,8 @@ export default function CommunityCenter() {
 
   useEffect(() => {
     const t1 = setTimeout(() => setChatStage(1), 1600);
-    const t2 = setTimeout(() => setChatStage(2), 4800);
-    const t3 = setTimeout(() => setChatStage(3), 8000);
+    const t2 = setTimeout(() => setChatStage(2), 3200);
+    const t3 = setTimeout(() => setChatStage(3), 4800);
 
     return () => {
       clearTimeout(t1);
@@ -27,12 +27,12 @@ export default function CommunityCenter() {
 
   // TODO: wire these to real routes
   const handleListen = () => {
-    // navigate("/cambodia/community/listen");
+    navigate("/cambodia/community/listen");
     console.log("Listen clicked");
   };
 
   const handleLook = () => {
-    // navigate("/cambodia/community/look");
+    navigate("/cambodia/community/look");
     console.log("Look clicked");
   };
 
@@ -46,16 +46,17 @@ export default function CommunityCenter() {
     console.log("Chat clicked");
   };
 
+  const handleContribute = () => {
+    // navigate("/cambodia/community/contribute");
+    console.log("Contribute clicked");
+  };
+
   const iconButtonSx = {
     width: 64,
     height: 64,
-    bgcolor: "#FFFFFF40",
     border: "1px solid",
     borderColor: "#FFF",
     borderRadius: "50%",
-    "&:hover": {
-      bgcolor: "rgba(255,255,255,1)",
-    },
   } as const;
 
   const iconSx = { fontSize: 32, color: "#FFF" } as const;
@@ -72,11 +73,11 @@ export default function CommunityCenter() {
     >
       {/* CENTER DIAGRAM */}
       <Box
-        className="landing-center"
+        className="community-center"
         sx={{
           position: "relative",
-          width: 320,
-          height: 320,
+          width: 300,
+          height: 300,
         }}
       >
         {/* Central circle svg */}
@@ -119,86 +120,116 @@ export default function CommunityCenter() {
           </Typography>
         </Box>
 
-        {/* TOP NODE – LISTEN */}
+        {/* TOP – LISTEN */}
         <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: "50%",
-            transform: "translate(-50%, -30%)",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <IconButton sx={iconButtonSx} onClick={handleListen}>
-            <Headphones sx={iconSx} />
-          </IconButton>
-          <Typography sx={{ mt: 0.5, fontSize: 18, fontFamily: "Lato", color: "#FFF" }}>
-            Listen
-          </Typography>
-        </Box>
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: "50%",
+              transform: "translate(-50%, -30%)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <IconButton sx={iconButtonSx} onClick={handleListen}>
+              <Headphones sx={iconSx} />
+            </IconButton>
+            <Typography
+              sx={{ mt: 0.5, fontSize: 18, fontFamily: "Lato", color: "#FFF" }}
+            >
+              Listen
+            </Typography>
+          </Box>
 
-        {/* RIGHT NODE – LOOK */}
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            right: 0,
-            transform: "translate(30%, -50%)",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <IconButton sx={iconButtonSx} onClick={handleLook}>
-            <Image sx={iconSx} />
-          </IconButton>
-          <Typography sx={{ mt: 0.5, fontSize: 18, fontFamily: "Lato", color: "#FFF" }}>
-            Look
-          </Typography>
-        </Box>
+          {/* RIGHT – LOOK */}
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              right: 0,
+              transform: "translate(30%, -50%)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <IconButton sx={iconButtonSx} onClick={handleLook}>
+              <Image sx={iconSx} />
+            </IconButton>
+            <Typography
+              sx={{ mt: 0.5, fontSize: 18, fontFamily: "Lato", color: "#FFF" }}
+            >
+              Look
+            </Typography>
+          </Box>
 
-        {/* BOTTOM NODE – CONNECT */}
-        <Box
-          sx={{
-            position: "absolute",
-            bottom: 0,
-            left: "50%",
-            transform: "translate(-50%, 30%)",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <IconButton sx={iconButtonSx} onClick={handleConnect}>
-            <Hub sx={iconSx} />
-          </IconButton>
-          <Typography sx={{ mt: 0.5, fontSize: 18, fontFamily: "Lato", color: "#FFF" }}>
-            Connect
-          </Typography>
-        </Box>
+          {/* BOTTOM-LEFT – CONNECT */}
+          <Box
+            sx={{
+              position: "absolute",
+              bottom: 0,
+              left: "25%",
+              transform: "translate(-50%, 30%)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <IconButton sx={iconButtonSx} onClick={handleConnect}>
+              <Hub sx={iconSx} />
+            </IconButton>
+            <Typography
+              sx={{ mt: 0.5, fontSize: 18, fontFamily: "Lato", color: "#FFF" }}
+            >
+              Connect
+            </Typography>
+          </Box>
 
-        {/* LEFT NODE – CHAT */}
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: 0,
-            transform: "translate(-30%, -50%)",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <IconButton sx={iconButtonSx} onClick={handleChat}>
-            <Chat sx={iconSx} />
-          </IconButton>
-          <Typography sx={{ mt: 0.5, fontSize: 18, fontFamily: "Lato", color: "#FFF" }}>
-            Chat
-          </Typography>
+          {/* BOTTOM-RIGHT – CONTRIBUTE */}
+          <Box
+            sx={{
+              position: "absolute",
+              bottom: 0,
+              left: "75%",
+              transform: "translate(-50%, 30%)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <IconButton sx={iconButtonSx} onClick={handleContribute}>
+              <PostAdd sx={iconSx} />
+            </IconButton>
+            <Typography
+              sx={{ mt: 0.5, fontSize: 18, fontFamily: "Lato", color: "#FFF" }}
+            >
+              Contribute
+            </Typography>
+          </Box>
+
+          {/* LEFT – CHAT */}
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: 0,
+              transform: "translate(-30%, -50%)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <IconButton sx={iconButtonSx} onClick={handleChat}>
+              <Chat sx={iconSx} />
+            </IconButton>
+            <Typography
+              sx={{ mt: 0.5, fontSize: 18, fontFamily: "Lato", color: "#FFF" }}
+            >
+              Chat
+            </Typography>
+          </Box>
         </Box>
-      </Box>
 
       {/* BOTTOM-LEFT CHATTER GUIDE */}
       <Box
@@ -226,7 +257,7 @@ export default function CommunityCenter() {
         {chatStage === 2 && (
           <>
             <ChatBubble>Welcome to the Community Center!</ChatBubble>
-            <ChatBubbleRecent>Here you can explore Smot chanting.</ChatBubbleRecent>
+            <ChatBubbleRecent>Here you can explore Smot chanting</ChatBubbleRecent>
             <ThinkingIndicator />
           </>
         )}
@@ -234,8 +265,8 @@ export default function CommunityCenter() {
         {chatStage === 3 && (
           <>
             <ChatBubble>Welcome to the Community Center!</ChatBubble>
-            <ChatBubble>Here you can explore Smot chanting.</ChatBubble>
-            <ChatBubbleRecent>Tap an icon above to begin.</ChatBubbleRecent>
+            <ChatBubble>Here you can explore Smot chanting</ChatBubble>
+            <ChatBubbleRecent>Tap an icon above to begin</ChatBubbleRecent>
             <ThinkingIndicator />
           </>
         )}
