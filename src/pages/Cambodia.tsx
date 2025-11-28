@@ -1,21 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import SyncAlt from "@mui/icons-material/SyncAlt";
+import ChatBubble from "../components/ChatBubble";
+import ChatBubbleRecent from "../components/ChatBubbleRecent";
+import ThinkingIndicator from "../components/ThinkingIndicator";
+import ChatButton from "../components/ChatButton";
+
 
 import background from "../assets/cambodian_background.png";
 
 type Language = "en" | "km";
 
 export default function CambodiaLanding() {
-const navigate = useNavigate();
+    const navigate = useNavigate();
 
-const [language, setLanguage] = useState<Language>("en");
+    const [language, setLanguage] = useState<Language>("en");
 
-const handleClick = () => {
-    navigate("/cambodia/community");
-};
+    const handleClick = () => {
+        navigate("/cambodia/community");
+    };
+
+    type ChatStage = 0 | 1 | 2 | 3; 
+    // 0 = just thinking
+    // 1 = thinking + first message
+    // 2 = both messages, no thinking
+
+    const [chatStage, setChatStage] = useState<ChatStage>(0);
+
+    useEffect(() => {
+    const t1 = setTimeout(() => setChatStage(1), 1600);  // first message
+    const t2 = setTimeout(() => setChatStage(2), 3200);  // second message
+    const t3 = setTimeout(() => setChatStage(3), 4800);  // third message
+
+    return () => {
+        clearTimeout(t1);
+        clearTimeout(t2);
+        clearTimeout(t3);
+    };
+    }, []);
 
 return (
     <Box className="landing-container">
@@ -96,19 +120,21 @@ return (
                 }}
             >
                 <Button
+                
                     variant="outlined"
                     onClick={() => setLanguage("en")}
                     sx={{
                         borderRadius: "6px",
-                        border: "1px solid #FFF",
+                        border: language === "en" ? "1.5px solid #FFF" : "1px solid #FFF",
                         display: "flex",
                         padding: "7px 12px",
                         alignItems: "center",
                         gap: "8px",
-                        backgroundColor: language === "en" ? "#FFFFFF50" : "transparent",
+                        backgroundColor: language === "en" ? "#FFFFFF40" : "transparent",
                         boxShadow: "none",
                         color: "#FFF",
-                        textTransform: "none"
+                        textTransform: "none",
+                        fontFamily: "Lato"
                     }}
                 >
                     English
@@ -119,18 +145,19 @@ return (
                     onClick={() => setLanguage("km")}
                     sx={{
                         borderRadius: "6px",
-                        border: "1px solid #FFF",
+                        border: language === "km" ? "1.5px solid #FFF" : "1px solid #FFF",
                         display: "flex",
                         padding: "7px 12px",
                         alignItems: "center",
                         gap: "8px",
-                        backgroundColor: language === "km" ? "#FFFFFF50" : "transparent",
+                        backgroundColor: language === "km" ? "#FFFFFF40" : "transparent",
                         boxShadow: "none",
                         color: "#FFF",
-                        textTransform: "none"
+                        textTransform: "none",
+                        fontFamily: "Lato"
                     }}
                 >
-                    Khmer
+                    ខ្មែរ
                 </Button>
             </Box>
 
@@ -142,6 +169,60 @@ return (
                 style={{ color: "#FFFFFFB2", width: "64px", height: "64px" }}
             />
             </IconButton> */}
+        </Box>
+        <Box
+            sx={{
+                position: "fixed",
+                bottom: 36,
+                left: 24,
+                right: 24,
+                zIndex: 10,
+                display: "flex",
+                flexDirection: "column",
+                gap: 1,
+                alignItems: "flex-start",
+            }}
+            >
+            {chatStage === 0 && <ThinkingIndicator />}
+
+            {chatStage === 1 && (
+                <>
+                <ChatBubbleRecent>Hi there! Let’s get started</ChatBubbleRecent>
+                <ThinkingIndicator />
+                </>
+            )}
+
+            {chatStage === 2 && (
+                <>
+                <ChatBubble>
+                    {language === "en"
+                    ? "Hi there! Let’s get started"
+                    : "សួស្តី! ចូរចាប់ផ្តើម"}
+                </ChatBubble>
+                <ChatBubbleRecent>
+                    {language === "en" ? "Choose a language" : "ជ្រើសរើសភាសា"}
+                </ChatBubbleRecent>
+                <ThinkingIndicator />
+                </>
+            )}
+
+            {chatStage === 3 && (
+                <>
+                <ChatBubble>
+                    {language === "en"
+                    ? "Hi there! Let’s get started"
+                    : "សួស្តី! ចូរចាប់ផ្តើម"}
+                </ChatBubble>
+                <ChatBubbleRecent>
+                    {language === "en" ? "Choose a language" : "ជ្រើសរើសភាសា"}
+                </ChatBubbleRecent>
+                <ChatButton
+                    label={language === "en" ? "Continue" : "បន្ត"}
+                    onClick={handleClick}
+                />
+                <ThinkingIndicator />
+                </>
+            )}
         </Box>
     </Box>
 );
