@@ -5,6 +5,7 @@ export type ListenItem = {
   file_name: string;
   original_file_extension: string | null;
   audio_url: string | null;
+  semantic_name: string | null;
 };
 
 export type LookItem = {
@@ -26,7 +27,7 @@ export type LookItem = {
 export async function fetchListenItems(): Promise<ListenItem[]> {
   const { data, error } = await supabase
     .from("smot_audio")
-    .select("audio_id, file_name, original_file_extension, audio_url")
+    .select("audio_id, file_name, original_file_extension, audio_url, semantic_name")
     .order("audio_id", { ascending: true });
 
   console.log("fetchListenItems result:", { data, error });
@@ -49,6 +50,15 @@ export function getAudioUrl(item: ListenItem): string {
 
   const { data } = supabase.storage.from("smot_audio").getPublicUrl(path);
   return data.publicUrl;
+}
+
+export function getSemanticName(item: ListenItem): string {
+    if (item.semantic_name) {
+      return item.semantic_name;
+    }
+    else {
+        return "";
+    }
 }
 
 export async function fetchLookItems(): Promise<LookItem[]> {

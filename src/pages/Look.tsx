@@ -108,7 +108,7 @@ return (
                         backgroundColor: "transparent",
                         boxShadow: "none",
                         paddingBottom: "12px",
-                        height: "164px"
+                        height: "170px"
                     }}
                     >
                     {/* IMAGE + FULLSCREEN ICON */}
