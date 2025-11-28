@@ -16,7 +16,7 @@ export default function MapSection() {
       <ComposableMap
         projection="geoEqualEarth"
         projectionConfig={{
-          scale: 1000,
+          scale: 1500,
           center: [104, 11] as any,
         }}
         style={{ width: "100%", height: "100%" }}
@@ -85,7 +85,7 @@ export default function MapSection() {
       <Box
         sx={{
           position: "absolute",
-          top: "40%",
+          top: "37%",
           left: "40%",
           transform: "translateX(-10%)",
           zIndex: 10,
@@ -108,7 +108,7 @@ export default function MapSection() {
                 top: 24,
                 left: "50%",
                 transform: "translateX(-50%)",
-                background: "#C7C7C7",
+                background: "#FFF",
                 borderRadius: "12px",
                 px: 3,
                 py: 1.5,
@@ -126,7 +126,7 @@ export default function MapSection() {
                 top: 64,
                 left: "50%",
                 transform: "translateX(-50%)",
-                background: "#C7C7C7",
+                background: "#FFF",
                 borderRadius: "12px",
                 px: 3,
                 py: 1.5,

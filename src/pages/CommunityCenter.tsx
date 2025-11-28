@@ -16,7 +16,7 @@ export default function CommunityCenter() {
   useEffect(() => {
     const t1 = setTimeout(() => setChatStage(1), 1600);
     const t2 = setTimeout(() => setChatStage(2), 4800);
-    const t3 = setTimeout(() => setChatStage(3), 6400);
+    const t3 = setTimeout(() => setChatStage(3), 8000);
 
     return () => {
       clearTimeout(t1);

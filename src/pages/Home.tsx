@@ -25,7 +25,7 @@ export default function Home() {
         width: "100%",
         overflowY: "auto",
         scrollSnapType: "y mandatory",
-        bgcolor: "#E6E7EB",
+        bgcolor: "#FFF",
       }}
     >
       <Box
@@ -39,7 +39,6 @@ export default function Home() {
       >
         <Box
           sx={{
-            border: "1px solid #C7C7C7",
             borderRadius: "40px",
             height: "95vh",
             width: { xs: "80%", sm: "420px" },
@@ -49,7 +48,7 @@ export default function Home() {
             alignItems: "center",
             justifyContent: "center",
             position: "relative",
-            backgroundColor: "#fff",
+            background: "linear-gradient(170deg, #FFD992 2.66%, #FDCF91 42.08%, #F5C68E 66.15%, #D7A189 114.84%, #C59B8A 144.98%)",
             px: 2,
           }}
         >
@@ -61,7 +60,7 @@ export default function Home() {
               letterSpacing: "0.18em",
               textAlign: "center",
               textTransform: "uppercase",
-              color: "#AF522C"
+              color: "#FFF"
             }}
           >
             {EN_TEXT}
@@ -74,7 +73,7 @@ export default function Home() {
                 fontSize: "24px",
                 textAlign: "center",
                 lineHeight: 1.4,
-                color: "#E6AC73"
+                color: "#FFF"
               }}
             >
               {KM_TEXT}
@@ -91,7 +90,7 @@ export default function Home() {
               cursor: "pointer",
             }}
           >
-            <ArrowDownwardIcon fontSize="large" sx={{ color: "#C7C7C7" }}/>
+            <ArrowDownwardIcon fontSize="large" sx={{ color: "#FFF" }}/>
           </Box>
         </Box>
       </Box>
