@@ -11,7 +11,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Home', 'Landing', 'Community Center'];
+const pages = ['Home', 'Cambodia', 'Community Center'];
 
 export default function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -27,7 +27,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <AppBar position="static">
+    <AppBar position="static"  sx={{ backgroundColor: "#F18C6A" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -37,6 +37,7 @@ export default function Navbar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
+              sx={{ color: "#FFF" }}
             >
               <MenuIcon />
             </IconButton>
@@ -55,13 +56,35 @@ export default function Navbar() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: 'block', md: 'none' } }}
+              PaperProps={{
+                sx: {
+                  mt: 1,
+                  borderRadius: "12px",
+                  boxShadow: "0px 6px 20px rgba(0,0,0,0.15)", 
+                  minWidth: "160px",
+                  overflow: "hidden",
+                  gap: "4px"
+                },
+              }}
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={ () => {
-                        page == "Home" ? navigate("/") : page == "Landing" ? navigate("/cambodia") : navigate("/cambodia/community");
+                        page == "Home" ? navigate("/") : page == "Cambodia" ? navigate("/cambodia") : navigate("/cambodia/community");
                         handleCloseNavMenu();
                     }}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                    <Typography
+                        sx={{
+                        position: "relative",
+                        px: "12px",
+                        py: "4px",
+                        fontSize: 14,
+                        lineHeight: 1,
+                        fontFamily: "Lato",
+                        whiteSpace: "nowrap",
+                        }}
+                    >
+                        {page}
+                    </Typography>
                 </MenuItem>
               ))}
             </Menu>

@@ -36,9 +36,9 @@ export default function CommunityCenter() {
     console.log("Look clicked");
   };
 
-  const handleUnderstand = () => {
-    // navigate("/cambodia/community/understand");
-    console.log("Understand clicked");
+  const handleConnect = () => {
+    // navigate("/cambodia/community/connect");
+    console.log("Connect clicked");
   };
 
   const handleChat = () => {
@@ -159,7 +159,7 @@ export default function CommunityCenter() {
           </Typography>
         </Box>
 
-        {/* BOTTOM NODE – UNDERSTAND */}
+        {/* BOTTOM NODE – CONNECT */}
         <Box
           sx={{
             position: "absolute",
@@ -171,11 +171,11 @@ export default function CommunityCenter() {
             alignItems: "center",
           }}
         >
-          <IconButton sx={iconButtonSx} onClick={handleUnderstand}>
+          <IconButton sx={iconButtonSx} onClick={handleConnect}>
             <Hub sx={iconSx} />
           </IconButton>
           <Typography sx={{ mt: 0.5, fontSize: 18, fontFamily: "Lato", color: "#FFF" }}>
-            Understand
+            Connect
           </Typography>
         </Box>
 
