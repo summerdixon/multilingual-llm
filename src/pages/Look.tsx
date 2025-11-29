@@ -73,14 +73,29 @@ return (
             Look at Smot chants and descriptions
             </Typography>
 
-            {loading && <Typography sx={{ mt: 2 }}>Loading images…</Typography>}
+            {loading && <Typography sx={{
+                        fontWeight: 600,
+                        fontSize: 14,
+                        fontFamily: "Lato",
+                        color: "#FFFFFF",
+                      }}>Loading images…</Typography>}
 
             {error && (
-            <Typography sx={{ mt: 2, color: "#fecaca" }}>{error}</Typography>
+            <Typography sx={{
+                fontWeight: 600,
+                fontSize: 14,
+                fontFamily: "Lato",
+                color: "#FFFFFF",
+              }}>{error}</Typography>
             )}
 
             {!loading && !error && items.length === 0 && (
-            <Typography sx={{ mt: 2 }}>No images found yet.</Typography>
+            <Typography sx={{
+                fontWeight: 600,
+                fontSize: 14,
+                fontFamily: "Lato",
+                color: "#FFFFFF",
+              }}>No images found yet.</Typography>
             )}
 
             {/* GALLERY GRID */}
@@ -176,7 +191,7 @@ return (
             PaperProps={{
             sx: {
                 backgroundColor: "#F18C6A",
-                borderRadius: "25px"
+                borderRadius: 3
             },
             }}
         >

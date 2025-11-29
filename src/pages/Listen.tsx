@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { Box, Card, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Box, Button, Card, Typography } from "@mui/material";
+import { ArrowBack } from "@mui/icons-material";
 import Navbar from "../components/Navbar";
 import { fetchListenItems, getAudioUrl, getSemanticName, type ListenItem } from "../api/smot";
 
@@ -7,6 +9,8 @@ export default function Listen() {
   const [items, setItems] = useState<ListenItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchListenItems()
@@ -37,25 +41,66 @@ export default function Listen() {
         }}
     >
         <Box sx={{ maxWidth: 1000, mx: "auto", p: 3, pb: 6 }}>
+        <Button
+            variant="outlined"
+            onClick={() => navigate('/cambodia/community')}
+            sx={{
+                position: "absolute",
+                borderRadius: "9999px",
+                px: 2,
+                py: 0.5,
+                fontSize: 14,
+                fontFamily: "Lato",
+                textTransform: "none",
+                color: "#F18C6A",
+                border: "1.5px solid #FFF",
+                background: "#FFFFFF",
+                boxShadow: "0 0 0 1px rgba(0,0,0,0.05)",
+                alignSelf: "center",
+                height: "36px",
+                mb: "16px",
+                gap: "8px",
+                zIndex: "999"
+              }}
+        >
+            <ArrowBack/>
+            Return to Community Center
+        </Button>
           <Typography
             sx={{
               fontFamily: "Lato",
               fontSize: 28,
               fontWeight: 400,
               mb: 2,
+              mt: 7
             }}
           >
             Listen to Smot chanting
           </Typography>
 
-          {loading && <Typography sx={{ mt: 2 }}>Loading audio…</Typography>}
+          {loading && <Typography sx={{
+                        fontWeight: 600,
+                        fontSize: 14,
+                        fontFamily: "Lato",
+                        color: "#FFFFFF",
+                      }}>Loading audio…</Typography>}
 
           {error && (
-            <Typography sx={{ mt: 2, color: "#fecaca" }}>{error}</Typography>
+            <Typography sx={{
+                fontWeight: 600,
+                fontSize: 14,
+                fontFamily: "Lato",
+                color: "#FFFFFF",
+              }}>{error}</Typography>
           )}
 
           {!loading && !error && items.length === 0 && (
-            <Typography sx={{ mt: 2 }}>No audio items found yet.</Typography>
+            <Typography sx={{
+                fontWeight: 600,
+                fontSize: 14,
+                fontFamily: "Lato",
+                color: "#FFFFFF",
+              }}>No audio items found yet.</Typography>
           )}
 
           {/* GRID OF CARDS */}
