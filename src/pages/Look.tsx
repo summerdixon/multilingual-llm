@@ -1,14 +1,7 @@
 import { useEffect, useState } from "react";
-import {
-Box,
-Typography,
-Card,
-CardMedia,
-CardContent,
-IconButton,
-Dialog,
-DialogContent,
-} from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Box, Button, Typography, Card, CardMedia, CardContent, IconButton, Dialog, DialogContent } from "@mui/material";
+import { ArrowBack } from "@mui/icons-material";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import CloseIcon from "@mui/icons-material/Close";
 import Navbar from "../components/Navbar";
@@ -21,6 +14,8 @@ const [error, setError] = useState<string | null>(null);
 
 const [openModal, setOpenModal] = useState(false);
 const [activeItem, setActiveItem] = useState<LookItem | null>(null);
+
+const navigate = useNavigate();
 
 useEffect(() => {
     fetchLookItems()
@@ -62,12 +57,38 @@ return (
     >
 
         <Box sx={{ maxWidth: 1100, mx: "auto", p: 3, pb: 6 }}>
+        <Button
+            variant="outlined"
+            onClick={() => navigate('/cambodia/community')}
+            sx={{
+                position: "absolute",
+                borderRadius: "9999px",
+                px: 2,
+                py: 0.5,
+                fontSize: 14,
+                fontFamily: "Lato",
+                textTransform: "none",
+                color: "#FFFFFF",
+                border: "1.5px solid #F18C6A",
+                background: "#F18C6A",
+                boxShadow: "0 0 0 1px rgba(0,0,0,0.05)",
+                alignSelf: "center",
+                height: "36px",
+                mb: "16px",
+                gap: "8px",
+                zIndex: "999"
+              }}
+        >
+            <ArrowBack/>
+            Return to Community Center
+        </Button>
             <Typography
             sx={{
                 fontFamily: "Lato",
                 fontSize: 28,
                 fontWeight: 400,
                 mb: 2,
+                mt: 7
             }}
             >
             Look at Smot chants and descriptions

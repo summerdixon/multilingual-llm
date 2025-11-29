@@ -11,7 +11,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Home', 'Cambodia', 'Community Center'];
+const pages = ['Home', 'Cambodian Knowledge Portal' ];
 
 export default function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -69,7 +69,7 @@ export default function Navbar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={ () => {
-                        page == "Home" ? navigate("/") : page == "Cambodia" ? navigate("/cambodia") : navigate("/cambodia/community");
+                        page == "Home" ? navigate("/") : navigate("/cambodia");
                         handleCloseNavMenu();
                     }}>
                     <Typography
