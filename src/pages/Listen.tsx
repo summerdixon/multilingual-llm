@@ -36,11 +36,10 @@ export default function Listen() {
         color: "#fff",
         }}
         style={{
-        background:
-            "linear-gradient(170deg, #FFD992 2.66%, #FDCF91 42.08%, #F5C68E 66.15%, #D7A189 114.84%, #C59B8A 144.98%)",
+            background: "linear-gradient(169deg, #FFD485 2.68%, #FFCC86 36.33%, #F5BB76 54.97%, #DFA288 91.78%, #C38F79 100%)",
         }}
     >
-        <Box sx={{ maxWidth: 1000, mx: "auto", p: 3, pb: 6 }}>
+        <Box sx={{ maxWidth: 1000, mx: "auto", p: 3, pb: 6, mt: "48px" }}>
         <Button
             variant="outlined"
             onClick={() => navigate('/cambodia/community')}

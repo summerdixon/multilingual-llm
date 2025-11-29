@@ -27,7 +27,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <AppBar position="static"  sx={{ backgroundColor: "#F18C6A" }}>
+    <AppBar position="fixed" sx={{ backgroundColor: "#F18C6A", boxShadow: "none" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

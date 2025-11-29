@@ -42,24 +42,24 @@ export default function CommunityCenter() {
   };
 
   const handleChat = () => {
-    // navigate("/cambodia/community/chat");
+    navigate("/cambodia/community/chat");
     console.log("Chat clicked");
   };
 
   const handleContribute = () => {
-    // navigate("/cambodia/community/contribute");
+    navigate("/cambodia/community/contribute");
     console.log("Contribute clicked");
   };
 
   const iconButtonSx = {
-    width: 64,
-    height: 64,
+    width: 56,
+    height: 56,
     border: "1px solid",
     borderColor: "#FFF",
     borderRadius: "50%",
   } as const;
 
-  const iconSx = { fontSize: 32, color: "#FFF" } as const;
+  const iconSx = { fontSize: 24, color: "#FFF" } as const;
 
   return (
     <>
@@ -67,8 +67,7 @@ export default function CommunityCenter() {
     <Box
       className="landing-container"
       style={{
-        background:
-          "linear-gradient(170deg, #FFD992 2.66%, #FDCF91 42.08%, #F5C68E 66.15%, #D7A189 114.84%, #C59B8A 144.98%)",
+        background: "linear-gradient(169deg, #FFD485 2.68%, #FFCC86 36.33%, #F5BB76 54.97%, #DFA288 91.78%, #C38F79 100%)",
       }}
     >
       {/* CENTER DIAGRAM */}
@@ -78,6 +77,7 @@ export default function CommunityCenter() {
           position: "relative",
           width: 300,
           height: 300,
+          top: "40%"
         }}
       >
         {/* Central circle svg */}
