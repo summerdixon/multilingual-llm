@@ -37,7 +37,7 @@ export default function CommunityCenter() {
   };
 
   const handleConnect = () => {
-    // navigate("/cambodia/community/connect");
+    navigate("/cambodia/community/connect");
     console.log("Connect clicked");
   };
 

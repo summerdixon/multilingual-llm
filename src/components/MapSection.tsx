@@ -60,15 +60,15 @@ export default function MapSection() {
                     onClick={handleCambodiaClick}
                     style={{
                       default: {
-                        fill: "#E6AC73",
-                        stroke: "#AF522C",
+                        fill: "#F5BB76",
+                        stroke: "#F18C6A",
                         strokeWidth: 1,
                         outline: "none",
                         cursor: "pointer",
                       },
                       hover: {
-                        fill: "#E6AC73",
-                        stroke: "#AF522C",
+                        fill: "#F5BB76",
+                        stroke: "#F18C6A",
                         strokeWidth: 1.2,
                         outline: "none",
                         cursor: "pointer",
@@ -94,7 +94,7 @@ export default function MapSection() {
         <Chip
           label="Cambodia / កម្ពុជា"
           sx={{
-            backgroundColor: "rgba(175,82,44,0.9)",
+            backgroundColor: "#F18C6A",
             color: "#fff",
             fontSize: 12,
             fontFamily: "Lato",
@@ -102,7 +102,7 @@ export default function MapSection() {
         />
       </Box>
         <Chip
-            label="Click the highlighted country to continue"
+            label="Click on a highlighted country to continue"
             sx={{
                 position: "absolute",
                 top: 24,
@@ -120,7 +120,7 @@ export default function MapSection() {
             }}
         />
         <Chip
-            label="ចុចប្រទេសដែលបានបន្លិចដើម្បីបន្ត"
+            label="ចុចលើប្រទេសដែលបានបន្លិចដើម្បីបន្ត"
             sx={{
                 position: "absolute",
                 top: 64,

@@ -7,6 +7,7 @@ import Listen from './pages/Listen.tsx'
 import Look from './pages/Look.tsx'
 import Contribute from './pages/Contribute.tsx'
 import Chat from './pages/Chat.tsx'
+import Connect from './pages/Connect.tsx'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/cambodia/community/look" element={<Look/>} />
         <Route path="/cambodia/community/contribute" element={<Contribute/>} />
         <Route path="/cambodia/community/chat" element={<Chat/>} />
+        <Route path="/cambodia/community/connect" element={<Connect/>} />
       </Routes>
     </Router>
   )

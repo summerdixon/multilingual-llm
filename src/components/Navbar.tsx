@@ -30,7 +30,7 @@ export default function Navbar() {
     <AppBar position="fixed" sx={{ backgroundColor: "#F18C6A", boxShadow: "none" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: 'flex' }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -55,7 +55,7 @@ export default function Navbar() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ display: { xs: 'block', md: 'none' } }}
+              sx={{ display: 'block' }}
               PaperProps={{
                 sx: {
                   mt: 1,
@@ -88,17 +88,6 @@ export default function Navbar() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
           </Box>
         </Toolbar>
       </Container>

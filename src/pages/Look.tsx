@@ -125,7 +125,7 @@ return (
                 mt: 3,
                 display: "grid",
                 gap: 2,
-                gridTemplateColumns: "repeat(2, 1fr)", // 2 per row
+                gridTemplateColumns: "repeat(2, 1fr)",
                 }}
             >
                 {items.map((item) => {
@@ -143,10 +143,9 @@ return (
                         backgroundColor: "transparent",
                         boxShadow: "none",
                         paddingBottom: "12px",
-                        height: "170px"
+                        height: "160px"
                     }}
                     >
-                    {/* IMAGE + FULLSCREEN ICON */}
                     <Box sx={{ position: "relative" }}>
                         <CardMedia
                         component="img"
@@ -160,7 +159,6 @@ return (
                         />                    
                     </Box>
 
-                    {/* CAPTION */}
                     <CardContent
                         sx={{
                         py: 1.5,
@@ -202,7 +200,6 @@ return (
             )}
         </Box>
 
-        {/* FULLSCREEN MODAL */}
         <Dialog
             open={openModal}
             onClose={handleCloseModal}
